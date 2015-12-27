@@ -35,9 +35,11 @@ var upload = multer({ dest: 'uploads/' });
 //The docs are not clear on the next two lines. Both lines are necessary for sockets.
 var socketio = require('socket.io');
 var io = socketio(server);
-server.listen(8080);
-console.log("App listening on port 8080");
 
+//do not remove. Works for localhost AND deployment/production.
+var port = process.env.PORT || '8080'; 
+server.listen(port);
+console.log("App listening on port");
 
 var db = require('./database/UserModel');
 var User = db.user

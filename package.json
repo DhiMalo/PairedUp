@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "postinstall": "bower install && grunt build"
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A Pair Programming Web App",
   "main": "server.js",
+  "engines": {
+    "node": "5.0.0"
+  },
   "scripts": {
     "test": "mocha",
     "postinstall": "bower install"

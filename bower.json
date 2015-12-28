@@ -23,7 +23,5 @@
     "angular-xeditable": "~0.1.9",
     "eventEmitter": "~4.3.0"
   },
-  "resolutions": {
-    "angular-ui-ace": "~0.2.3"
-  }
+  "resolutions": {}
 }

@@ -3,7 +3,7 @@
   "description": "Learn, Share, Code ...and give back.",
   "main": "app.js",
   "authors": [
-    "Aheri Stanford-Asiyo", "Kristina McElveen", "Carine Todmia", "Joseph Sun"
+    "Aheri Stanford-Asiyo", "Carine Todmia", "Joseph Sun", "Kristina McElveen"
   ],
   "license": "ISC",
   "homepage": "https://github.com/MagCacti/PairedUp",

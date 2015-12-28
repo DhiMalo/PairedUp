@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['client/**/*.js', 'server/**/*.js', '*.js'],
+        src: ['client/**/*.js', 'database/**/*.js', 'server.js'],
         dest: 'dist/concat.js'
       }
     },
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     },
     dist: {
         files: {
-          'dist/uglified.min.js': ['dist/PairedUpConcat.js']
+          'dist/uglified.min.js': ['dist/PairedUpUgliConcat.js']
         }
       }
     },
@@ -48,10 +48,9 @@ module.exports = function(grunt) {
         force: 'true',
         jshintrc: '.jshintrc',
         ignores: [
-          'public/lib/**/*.js',
-          'public/dist/**/*.js',
+          'client/assets/lib/**/*.js',
           'dist/**/*.js', //ignore the concatenated/uglified files.
-          'node_modules/**/*.js'
+          'node_modules/**/*.js' 
         ]
       }
     },
@@ -59,7 +58,7 @@ module.exports = function(grunt) {
     cssmin: {
        dist: {
         files: {
-          'dist/cssMinFile.min.css': ['public/style.css']
+          'dist/cssMinFile.min.css': ['client/styles/*.css'] //this will include spacelab.css and style.css
         }
       }
     },
@@ -67,8 +66,8 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: [
-          'public/client/**/*.js',
-          'public/lib/**/*.js',
+          'client/**/*.js',
+          'client/assets/lib/**/*.js',
         ],
         tasks: [
           'concat',
@@ -76,7 +75,7 @@ module.exports = function(grunt) {
         ]
       },
       css: {
-        files: 'public/style.css',
+        files: 'client/styles/*.css',
         tasks: ['cssmin']
       }
     },
@@ -87,14 +86,14 @@ module.exports = function(grunt) {
     },
   });
 
-  grunt.loadNpmTasks('grunt-contrib-uglify'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-contrib-jshint'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-contrib-watch'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-contrib-concat'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-contrib-cssmin'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-mocha-test'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-shell'); //saved this dependency.
-  grunt.loadNpmTasks('grunt-nodemon'); //saved this dependency.
+  grunt.loadNpmTasks('grunt-contrib-uglify'); // saved this dependency.
+  grunt.loadNpmTasks('grunt-contrib-jshint'); // saved this dependency.
+  grunt.loadNpmTasks('grunt-contrib-watch'); // TO DO: add dependency to package.json if utility needed.
+  grunt.loadNpmTasks('grunt-contrib-concat'); // saved this dependency.
+  grunt.loadNpmTasks('grunt-contrib-cssmin'); // saved this dependency.
+  grunt.loadNpmTasks('grunt-mocha-test'); // TO DO: add dependency to package.json if utility needed.
+  grunt.loadNpmTasks('grunt-shell'); // TO DO: add dependency to package.json if utility needed.
+  grunt.loadNpmTasks('grunt-nodemon'); // TO DO: add dependency to package.json if utility needed.
 
   grunt.registerTask('server-dev', function (target) {
     // Running nodejs in a different process and displaying output on the main console
@@ -138,6 +137,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat', 'uglify', 'cssmin', 'jshint'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -149,9 +149,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-      // add your production server task here
+      // Consider adding production server tasks here from grunt build.
   ]);
-
 
 };
 

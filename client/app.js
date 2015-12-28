@@ -5,10 +5,10 @@ angular.module('myApp', [
 	// 'myApp.codeshare',
    //for client side sockets
   'btford.socket-io',
-  'xeditable'
   // 'myApp.services',
-  // 'myApp.current'
-
+  // 'myApp.current',
+  // 'Icecomm',
+  'xeditable'
 ])
 .config(function($stateProvider, $urlRouterProvider, $locationProvider){
 

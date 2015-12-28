@@ -4,8 +4,9 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha"
-  },
+    "test": "mocha",
+    "postinstall": "bower install && grunt build"
+    },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kmcelveen/PairedUp.git"
@@ -29,6 +30,7 @@
     "express": "^4.13.3",
     "express-favicon": "^1.0.1",
     "express-session": "^1.12.1",
+    "grunt-contrib-uglify": "^0.11.0",
     "jwt-simple": "^0.4.0",
     "mocha": "^2.3.4",
     "moment": "^2.10.6",

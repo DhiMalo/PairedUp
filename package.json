@@ -1,7 +1,7 @@
 {
-  "name": "testapp",
+  "name": "PairedUp",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Pair Programming Web App",
   "main": "server.js",
   "scripts": {
     "test": "mocha",
@@ -49,5 +49,8 @@
     "request": "^2.67.0",
     "serve-favicon": "^2.3.0",
     "socket.io": "^1.3.7"
+  },
+  "devDependencies": {
+    "grunt-cli": "^0.1.13"
   }
 }

@@ -17,7 +17,7 @@ var request = require('request');
 // var userUtils = require('./server/userProfile/userUtils');
 
 var path = require('path');
-var config = require('config.js');
+var config = require('./config.js');
 
 var mongoose = require('mongoose');
 var uri = config.MONGO_URI; 

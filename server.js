@@ -272,7 +272,8 @@ function ensureAuthenticated(req, res, next) {
 passport.use(new GitHubStrategy({
     clientID: config.GITHUB_CLIENT_ID,
     clientSecret: config.GITHUB_SECRET,
-    callbackURL: "https://paired-up.herokuapp.com/auth/github/callback"
+    callbackURL: 'https://paired-up.herokuapp.com/auth/github/callback',
+    userAgent: 'PairedUp'
   },
   //Step 5
   function(accessToken, refreshToken, profile, done) {

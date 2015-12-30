@@ -45,7 +45,7 @@ var db = require('./database/UserModel');
 var User = db.user
 var userDocument = db.userDocument;
 var Messages = db.messages;
-var Skills = db.skills;
+// var Skills = db.skills;
 
 
 app.set('port', process.env.PORT || 8080);
@@ -180,55 +180,46 @@ app.get('/userprofile', function(req, res, next) {
   });
 });
 
-app.get('/skills', function(req, res, next){
+app.get('/oneuserskill', function(req, res, next){
+  console.log('this is the oneuserskill', req.body)
   User.find(function(err, user){
     if(err){next(err);}
+    console.log('this is the user within', user)
     res.json(user);
   })
 })
 
 
-app.param('user', function(req, res, next, id) {
-  var query = User.findById(id);
-  console.log('this is the id', query)
-  query.exec(function (err, user){
-    if (err) { return next(err); }
-    if (!user) { return next(new Error('can\'t find user')); }
-
-    req.user = user;
-    return next();
-  });
+app.post('/skills', function(req, res, next) {
+  // console.log('this is from skills', req.body)
+  User.findOne({github: req.body.github}, function(err, user) {
+  // console.log('this is from skills', user)
+    if(err){return next(err)}
+      for(var key in req.body){
+        if (req.body[key] !== req.body.github)
+        user.skills[key] = req.body[key]
+      }
+    user.save(function(err, user){
+      if (err){return next(err)}
+    // console.log('this after saving first skills', user)   
+    })
+  })
 });
 
-//this is not being integrated yet DONT DELETE
-// app.get('/skills/:user', function(req, res, next) {
-//   console.log('this is a single /skills/:user', req.user)
-//   req.user.populate('skills', function(err, user){
-  
-//   if (err){return next(err)}
-//   res.json(req.user);
-//   })
-// });
-
-//this post to the database. The :user params dont necessarily work yet though
-app.post('/skills/:user', function(req, res, next) {
-  var skills = new Skills(req.body);
-  skills.user = req.user
-  // console.log('this is skills/:user post:', req.user)
-  console.log('this is skills/:user req.user:', req.user)
-  // comment.post = req.post;
-
-  skills.save(function(err, skill){
-    if(err){ return next(err); }
-
-    req.user.skills.push(skill);
-    req.user.save(function(err, user) {
-      if(err){ return next(err); }
-
-      res.json(skill);
-    });
-  });
-});
+app.post('/futureskills', function(req, res, next){
+  // console.log('this is from futureskills', req.body)
+  User.findOne({github: req.body.github}, function(err, user) {
+    if(err){return next(err)}
+      for(var key in req.body){
+        if (req.body[key] !== req.body.github)
+        user.futureskills[key] = req.body[key]
+      }
+    user.save(function(err, user){
+      if (err){return next(err)}
+    // console.log('this after saving skills', user)   
+    })
+  })
+})
 
 app.get('/checkIfLoggedIn', function(req, res, next) {
   if(req.user) {
@@ -321,19 +312,20 @@ passport.use(new GitHubStrategy({
 var usersRoom;
 
 
-//The first event we will use is the connection event. It is fired when a client tries to connect to the server; Socket.io creates a new socket that we will use to receive or send messages to the client.
+//The first event we will use is the connection event. It is fired when a client tries to connect to the server; Socket.io creates a new socket that we will use to receive or send messages to the client  
+  var people = {};  
+  var rooms = {}; 
 io.on('connection', function(socket) {
   console.log('new connection');
 
-  //some room will be a variable. 
-  // io.to(usersRoom).emit(usersRoom);
-  //listen for a signal called add-customer. General code
-  // socket.on('add-customer', function(textFromEditor) {
-  //   console.log("Just heard a add-customer from Joseph");
-  //   //send a signal to frontEnd called notification
-  //   io.emit('notification', textFromEditor);
+  socket.join('room1');
+  io.to('room1').emit('joinedroom')
 
-  // });
+
+
+
+
+
 
   //this corresponds to the socket.emit('new message') on the client
     socket.on('new message', function(message) {
@@ -365,6 +357,17 @@ io.on('connection', function(socket) {
           io.emit('publish message', foundMessages);
         })
       });
+
+socket.on('/createroom', function(data){
+  rooms['chatroom'] = data.roomname
+  people['creator'] = data.creator
+  socket.join(data.roomname)
+  socket.on(data.roomname, function(data){
+    socket.broadcast.emit('/roomcreated', 'created a room here')
+  })
+  console.log('this is what we got back from the emit', rooms, people)
+})
+
 //general code
   socket.on('/create', function(data) {
     usersRoom = data.title
@@ -376,6 +379,15 @@ io.on('connection', function(socket) {
       socket.broadcast.emit('notification', data);
       });
     });
+          //some room will be a variable. 
+        // io.to(usersRoom).emit(usersRoom);
+        //listen for a signal called add-customer. General code
+        // socket.on('add-customer', function(textFromEditor) {
+        //   console.log("Just heard a add-customer from Joseph");
+        //   //send a signal to frontEnd called notification
+        //   io.emit('notification', textFromEditor);
+
+        // });
   
       //Sending a signal to the front end, along with the message from chat. This is so we can test the chat feature. Will build off of it later. 
 
@@ -444,6 +456,7 @@ io.on('connection', function(socket) {
             }
           });
         });
+
 
 });
 

@@ -9,6 +9,10 @@ body {
   /*font-size: 14px;*/  
 }
 
+#slider1 {
+  width: 200px;
+}
+
 /* Styles for login.html */
 .starter-template {
   padding: 40px 15px;

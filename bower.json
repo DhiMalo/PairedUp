@@ -1,9 +1,13 @@
+
 {
   "name": "PairedUp",
-  "description": "Learn, Share, Code ...and give back.",
+  "description": "A WorldWide Pair Programming WebApp",
   "main": "app.js",
   "authors": [
-    "Aheri Stanford-Asiyo", "Carine Todmia", "Joseph Sun", "Kristina McElveen"
+    "Aheri Stanford-Asiyo", 
+    "Kristina McElveen", 
+    "Joseph Sun", 
+    "Carine Todmia"
   ],
   "license": "ISC",
   "homepage": "https://github.com/MagCacti/PairedUp",

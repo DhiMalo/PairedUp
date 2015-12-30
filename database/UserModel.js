@@ -8,7 +8,6 @@ var Schema = mongoose.Schema;
 
 // Since you're connecting to a local instance, you can skip the username and password and use the following URI:
 
-
 var uri = config.MONGO_URI; 
 mongoose.connect(uri);
 
@@ -28,12 +27,24 @@ var userSchema = new Schema({
  github: String,
  //this needs to be refactored. it stores a new object of skills everytime you enter a 
  //a new skills
- skills:[{type: mongoose.Schema.Types.ObjectId, ref: 'Skills'}],
+futureskills: {
+  python: Boolean,
+  swift: Boolean,
+  java: Boolean,
+  android: Boolean,
+  ruby: Boolean,
+},
+skills:{ 
+  node: Number,
+  angular: Number,
+  html: Number,
+  css: Number, 
+  jquery: Number
+},
  messages:[{type: mongoose.Schema.Types.ObjectId, ref: 'Messages'}]
 });
 
  //this method would probably be best suited for our messages where skills would be messages
- //and the 
 
 var skillsSchema = new mongoose.Schema({
   node: Number,
@@ -41,6 +52,13 @@ var skillsSchema = new mongoose.Schema({
   html: Number,
   css: Number, 
   jquery: Number,
+  futureskills: {
+    python: Boolean,
+    swift: Boolean,
+    java: Boolean,
+    android: Boolean,
+    ruby: Boolean,
+  },
   userid: { type: Number, ref: 'User' }
 });
 

@@ -1,15 +1,13 @@
+<div class="row">
+
+<div class="col-md-4">
 <div class="chat-container">
-
 <div class="msg-container">
-
   <div ng-repeat="key in chat">
-    <p>{{key.displayName}} : </p> 
-    <p>{{key.text}}</p>
+    <p>{{key.displayName}} : {{key.text}}</p>
     <p>{{key.created}}</p>
   </div>
 </div>
-
-
 <form ng-submit="submit()">
 <div class="form-group">
     <label class="col-sm-2 control-label">Username</label>
@@ -18,12 +16,13 @@
     </div>
   </div>
   <textarea class="form-control" rows="3" ng-model="text" name="text"></textarea>
-
  <p ng-model="date" ></p>
-
   <input type="submit" id="submit" value="Submit" />
-
 </form>
+<a ui-sref="chat.room">Start a chatroom</a>
+</div>
+</div>
 
+<div class="col-md-4" ui-view></div>
 
 </div>

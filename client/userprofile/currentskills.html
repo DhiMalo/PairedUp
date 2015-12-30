@@ -1,18 +1,23 @@
-<h1>Current Skills</h1>
+<div class="row">
+	<div class="col-md-4">
+		<h1>Current Skills</h1>
 
-<h5><label>AngularJS</label><input ng-model="angular" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>AngularJS</label><input ng-model="angular" id="slider1" type="range" min="0" max="5" step="1" />
 
-<h5><label>NodeJS</label><input ng-model="node" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>NodeJS</label><input ng-model="node" id="slider1" type="range" min="0" max="5" step="1" />
 
-<h5><label>jQuery</label><input ng-model="jquery" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>jQuery</label><input ng-model="jquery" id="slider1" type="range" min="0" max="5" step="1" />
 
-<h5><label>HTML</label><input ng-model="html" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>HTML</label><input ng-model="html" id="slider1" type="range" min="0" max="5" step="1" />
 
-<h5><label>CSS</label><input ng-model="css" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>CSS</label><input ng-model="css" id="slider1" type="range" min="0" max="5" step="1" />
+	</div>
+	<div class="col-md-4">
+		</br></br></br></br></br></br>
+		<button ng-click="add()">Save</button>
+		</br></br>
+		
 
-<button ng-click="add()">ADD</button>
-</br>
-<a href="/skills">hit this</a>
-{{currentskills}}
-
-<a ui-sref="profile.futureskills">NEXT</a>
+		<a class="btn bg-success" ui-sref="profile.futureskills">NEXT</a>
+	</div>
+</div>

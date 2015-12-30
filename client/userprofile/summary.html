@@ -1,6 +1,44 @@
+<div class="row">
+<div class="col-md-4">
 <h1>Profile Summary</h1>
+<h5>This is what i know now</h5>
+<div ng-repeat="skill in userSkills">
+	angular: {{skill.angular}}
+	node: {{skill.node}}
+	jquery: {{skill.jquery}}
+	html: {{skill.html}}
+	css: {{skill.css}}
+</div>
 
-<h3>So this is where we are putting all the skills we have collected</h3>
+<h5>This is what I would like to learn</h5>
+<div ng-repeat="skill in futureSkills">
+	{{skill}}
+</div>
+</div>
 
-<!-- <h1 align="center">{{summaryofskills}}</h1> -->
+<div class="col-md-4">
+	<h3>Reach out to some people in Your Network</h3>
+
+<div ng-repeat="info in allUsers">
+	{{info.displayName}}, knows
+		<div ng-repeat="eachskill in allUsers.skills">
+			angular: {{eachskill.angular}}
+			node: {{eachskill.node}}
+			jquery: {{eachskill.jquery}}
+			html: {{eachskill.html}}
+			css: {{eachskill.css}}
+		</div>
+	and wants to know; 
+	<div ng-repeat="moreskills in allUsers.futureSkills">
+		{{moreskills}}
+	</div>
+	<button>Send Message</button>
+
+</div>
+
+</div>
+
+</div>
+
+
 

@@ -63,7 +63,7 @@ var routesActivation = require('./server/routes');
 
 app.set('port', process.env.PORT || 8080);
 app.use(upload.single('string'));
-app.use(favicon("../favicon.ico"));
+app.use(favicon("./favicon.ico"));
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
@@ -71,7 +71,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //serves up static files, otherwise we would not be able to load angular (and all the other bower components) in the index.html file
-app.use(express.static('../client'));
+app.use(express.static('./client'));
 
 // Initialize Passport!  Also use passport.session() middleware, to support
   // persistent login sessions (recommended).

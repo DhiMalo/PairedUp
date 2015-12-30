@@ -100,7 +100,10 @@ angular.module('myApp')
       }
     }
 
-    var socket = Io.connect("http://localhost:8080"),
+    // Grab the current URL which will be "paired-up.herokuapp.com" for Heroku, and "localhost:8080" for LocalHost.
+    var currentURLRoot = window.location.href.split('/')[2];
+  
+    var socket = Io.connect("https://"+currentURLRoot);
         connected = false;
 
     function addHandlers(socket) {

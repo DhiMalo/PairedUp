@@ -145,7 +145,9 @@ app.get('/auth/github/callback',
   function(req, res) {
     console.log("This is the request handler that will be called when they click the log in to github");
     //res.redirect('/');
-    res.redirect('http://localhost:8080/#/profile');
+    var currentURLRoot = window.location.href.split('/')[2]; //this grabs the current URL
+    // The resulting string = "paired-up.herokuapp.com" for Heroku and "localhost:8080" for LocalHost.
+    res.redirect('https://'+currentURLRoot+'/#/profile');
   });
 
 //Necessary for sockets.
@@ -270,7 +272,7 @@ function ensureAuthenticated(req, res, next) {
 passport.use(new GitHubStrategy({
     clientID: config.GITHUB_CLIENT_ID,
     clientSecret: config.GITHUB_SECRET,
-    callbackURL: "http://127.0.0.1:8080/auth/github/callback"
+    callbackURL: "https://paired-up.herokuapp.com/auth/github/callback"
   },
   //Step 5
   function(accessToken, refreshToken, profile, done) {

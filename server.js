@@ -11,13 +11,13 @@ var cookieParser = require('cookie-parser');
 var request = require('request');
 // var jwt = require('jwt-simple');
 // var moment = require('moment');
-// var utils = require('/server/utils.js');
-// var documentUtils = require('/server/documents/documentUtils');
-// var userAuthUtil = require('/server/userProfile/userOAuthUtils');
-// var userUtils = require('/server/userProfile/userUtils');
+// var utils = require('./server/utils.js');
+// var documentUtils = require('./server/documents/documentUtils');
+// var userAuthUtil = require('./server/userProfile/userOAuthUtils');
+// var userUtils = require('./server/userProfile/userUtils');
 
 var path = require('path');
-var config = require('../config.js');
+var config = require('config.js');
 
 var mongoose = require('mongoose');
 var uri = config.MONGO_URI; 
@@ -50,16 +50,16 @@ var upload = multer({ dest: 'uploads/' });
 
 var socketio = require('socket.io');
 //export this?
-var io = require('/server/socket/socket')(server);
+var io = require('./server/socket/socket')(server);
 
 server.listen(8080); 
 console.log("App listening on port 8080");
 
-var User = require('/server/userProfile/UserModel').user;
-var Skills = require('/server/database/SkillsModel').skills;
-var Messages = require('/server/database/MessageModel').messages;
+var User = require('./server/userProfile/UserModel').user;
+var Skills = require('./server/database/SkillsModel').skills;
+var Messages = require('./server/database/MessageModel').messages;
 
-var routesActivation = require('/server/routes');
+var routesActivation = require('./server/routes');
 
 app.set('port', process.env.PORT || 8080);
 app.use(upload.single('string'));

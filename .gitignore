@@ -33,4 +33,6 @@ dist/
 node_modules/
 client/bower_components/
 githubsecret
+# Added by DhiMalo during staging transtion:
+bower_components
 

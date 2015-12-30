@@ -8,7 +8,6 @@ var Schema = mongoose.Schema;
 
 // Since you're connecting to a local instance, you can skip the username and password and use the following URI:
 
-
 var uri = config.MONGO_URI; 
 mongoose.connect(uri);
 
@@ -46,7 +45,6 @@ skills:{
 });
 
  //this method would probably be best suited for our messages where skills would be messages
- //and the 
 
 var skillsSchema = new mongoose.Schema({
   node: Number,

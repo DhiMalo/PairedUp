@@ -12,4 +12,4 @@ angular.module('myApp')
       socket.emit(eventName, data);
     }
   };
-}])
+}]);

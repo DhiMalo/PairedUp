@@ -1,6 +1,8 @@
 <div class="well">
   <h1 class="text-primary"> Pair | Share | Learn </h1>
-</div><div class="row">
+</div>
+
+<div class="row">
 
 <div class="col-md-2"> 
 
@@ -12,6 +14,7 @@
     <button ng-click='shareWith(file.id)'>ShareWith</button>
     <button ng-click='update(file.id)'>Update</button>
   </div> 
+</div>
   
   <div class="col-md-4">
 
@@ -23,12 +26,16 @@
     <div ui-ace="aceOption" class="ace_editor" ng-model="aceModel"></div>
     <select ng-model="mode" ng-options="m for m in modes" ng-change="modeChanged()"></select>
   </div>
+
   <div>
+
     <div class='col-md-4'>
       <button class="btn-primary" ui-sref="codeshare.room">Start VideoChat</button>
       <div ui-view></div>
     </div>
+
   </div>
+
 </div>
 
 

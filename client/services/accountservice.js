@@ -66,8 +66,8 @@ angular.module('myApp')
           getData: function() {
             return $window.localStorage && $window.localStorage.getItem('notLoggedIn');
           },
-          updateProfile: function(profileData) {
-            return $http.put('/api/me', profileData);
+          updateProfile: function(profiledata) {
+            return $http.put('/api/me', profiledata);
           }
         };
       });

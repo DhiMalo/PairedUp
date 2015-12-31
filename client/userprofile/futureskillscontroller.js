@@ -1,5 +1,5 @@
 angular.module('myApp')
-	.controller('FutureSkillsController', ['$scope','profileData', 'Account', function($scope, profileData, Account){
+	.controller('FutureSkillsController', ['$scope','profiledata', 'Account', function($scope, profiledata, Account){
 		$scope.profile;
 		Account.getProfile().success(function(data){
 		  $scope.profile = data.profile.github
@@ -7,7 +7,7 @@ angular.module('myApp')
 		})
 
 		$scope.add = function(){
-			profileData.futureSkills({github: $scope.profile, python: $scope.python, java: $scope.java, swift: $scope.swift, android: $scope.android, ruby: $scope.ruby})
+			profiledata.futureSkills({github: $scope.profile, python: $scope.python, java: $scope.java, swift: $scope.swift, android: $scope.android, ruby: $scope.ruby})
 		}
 
 	}])

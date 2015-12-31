@@ -1,5 +1,5 @@
 angular.module('myApp')
-	.factory('profileData', ['$http', function($http){
+	.factory('profiledata', ['$http', function($http){
 	  	var obj = {
 	    	skills: ['hello'],
 	    	allUsers: []

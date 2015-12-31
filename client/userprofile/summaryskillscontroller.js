@@ -1,5 +1,5 @@
 angular.module('myApp')
-	.controller('SummaryController', ['$scope', 'Account', 'profileData', 'documentData', function($scope, Account, profileData, documentData) {
+	.controller('SummaryController', ['$scope', 'Account', 'profiledata', 'documentData', function($scope, Account, profiledata, documentData) {
 
 		//track skills section
 
@@ -18,7 +18,7 @@ angular.module('myApp')
 
 		$scope.allUsers= []; 
 		
-		profileData.getAllUsers().success(function(data){
+		profiledata.getAllUsers().success(function(data){
 		 	for (var i=0; i<data.length; i++){
 		  	$scope.allUsers.push(data[i]);
 		  	}

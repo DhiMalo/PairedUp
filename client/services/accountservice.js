@@ -1,24 +1,35 @@
 angular.module('myApp')
 .factory('Account', function($http, $window) {
 
-    return {
-      getProfile: function() {
-          return $http.get('/account')
-        .success(function(req, res){
-          var username = req.profile.displayName;
-          return username;
-        });
+  return {
+    getProfile: function() {
+      return $http.get('/account')
+      .success(function(req, res){
+        var username = req.profile.displayName;
+        return username;
+      });
       
-      },
+    },
 
-      isAuthenticated: function() {
-          return $http.get('/checkIfLoggedIn').then(function(response){
-            // console.log('this is isAuthenticated', response, 'response.data', response.data.loggedIn)
-            return response.data.loggedIn;
-        });
-        },
-
-      setChekIfActivelyLoggedIn: function(val) {
+    isAuthenticated: function() {
+      return $http.get('/checkIfLoggedIn').then(function(response){
+        // console.log('this is isAuthenticated', response, 'response.data', response.data.loggedIn)
+        return response.data.loggedIn;
+      });
+    },
+    setData: function(val) {
+      $window.localStorage && $window.localStorage.setItem('notLoggedIn', val);
+      return this;
+    },
+          //sets the value, of whether the user is logged our, into the localStorage. 
+          setLoggedOutData: function(val) {
+            $window.localStorage && $window.localStorage.setItem('Loggedout', val);
+            return this;
+          },
+          getLogInData: function() {
+            return $window.localStorage && $window.localStorage.getItem('UserDisplayName');
+          },
+          setChekIfActivelyLoggedIn: function(val) {
             $window.localStorage && $window.localStorage.setItem('notLoggedIn', val);
             return this;
           },
@@ -49,8 +60,14 @@ angular.module('myApp')
           getChekIfActivelyLoggedIn: function() {
             return $window.localStorage && $window.localStorage.getItem('notLoggedIn');
           },
-      updateProfile: function(profileData) {
-        return $http.put('/api/me', profileData);
-      }
-    };
-});
+          getLoggedOutData: function() {
+            return $window.localStorage && $window.localStorage.getItem('Loggedout');
+          },
+          getData: function() {
+            return $window.localStorage && $window.localStorage.getItem('notLoggedIn');
+          },
+          updateProfile: function(profileData) {
+            return $http.put('/api/me', profileData);
+          }
+        };
+      });

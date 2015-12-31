@@ -4,15 +4,44 @@ body {
 
 /* Styles for signin.html */
 .btn-default {
-	padding: 20px;
-	margin: 15px;
-	/*font-size: 14px;*/	
+  padding: 20px;
+  margin: 15px;
+  /*font-size: 14px;*/  
+}
+
+#slider1 {
+  width: 200px;
 }
 
 /* Styles for login.html */
 .starter-template {
   padding: 40px 15px;
   text-align: center;
+}
+
+/* Styles for codeshare.html */
+.ace_editor { height: 200px; } 
+
+
+/* Styles for profile.html */
+
+#padded {
+  padding-top: 30px;
+  /*padding: 20px;*/
+  margin: 3px;
+}
+
+#cool {
+  background-color: #272B37;
+}
+
+#sweet {
+  background-color: #EEEEEE;
+}
+
+#whiteText {
+  color: white;
+  font-style: Helvetica;
 }
 
 /* Styles for codeshare.html */

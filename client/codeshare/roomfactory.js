@@ -1,3 +1,4 @@
+var config = require('../../config.js');
 /*
   Room accepts the following dependencies:
 
@@ -100,7 +101,7 @@ angular.module('myApp')
       }
     }
 
-    var socket = Io.connect("https://paired-up.herokuapp.com"),
+    var socket = Io.connect(config.SERVE_HTTP),
         connected = false;
 
     function addHandlers(socket) {

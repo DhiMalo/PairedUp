@@ -1,7 +1,9 @@
+var config = require('../../config.js');
+
 angular.module('myApp')
 .factory('socket', ['$rootScope', function($rootScope) {
     //A socket connection to our server.
-  var socket = io.connect("https://paired-up.herokuapp.com");
+  var socket = io.connect(config.SERVE_HTTP);
   return {
     //listen to events.
     on: function(eventName, callback){

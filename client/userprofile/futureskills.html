@@ -1,3 +1,17 @@
-<h1>Future Skills</h1>
+<div class="row">
+		<h1>Future Skills</h1>
+		<h3>What skills would you like to learn in the future?</h3>
+	<div class="col-md-6">
+		
+			<label><input type="checkbox"  ng-model="python">  Python</label>
+			<label><input type="checkbox" ng-model="java">Java</label>
+			<label><input type="checkbox" ng-model="swift">Swift</label>
+			<label><input type="checkbox" ng-model="android">Android</label>
+			<label><input type="checkbox" ng-model="ruby">Ruby</label>
 
-<a ui-sref="profile.summary">FINISH</a>
+	</div>
+	<div class="col-md-2">
+		<button ng-click="add()">Add</button>
+		<a class="btn bg-success" ui-sref="profile.summary">FINISH</a>
+	</div>
+</div>

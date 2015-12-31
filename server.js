@@ -15,19 +15,15 @@ var request = require('request');
 // var documentUtils = require('./documents/documentUtils');
 // var userAuthUtil = require('./userProfile/userOAuthUtils');
 // var userUtils = require('./userProfile/userUtils');
-
 var path = require('path');
 var config = require('./config.js');
-
 var mongoose = require('mongoose');
 var uri = config.MONGO_URI; 
 mongoose.connect(uri);
 
-
 var db = mongoose.connection;
 db.on('error', function(err){
   console.log('connection error', err);
-
 });
 
 db.once('open', function(){
@@ -49,17 +45,12 @@ var userIds = {};
 var upload = multer({ dest: 'uploads/' });
 
 var socketio = require('socket.io');
-//export this?
 var io = require('./server/socket/socket')(server);
 
-//do not remove. Works for localhost AND deployment/production.
+// Next 3 lines required. Please do not remove. 
 var port = process.env.PORT || '8080'; 
 server.listen(port);
 console.log("App listening on port");
-
-// var User = require('/userProfile/UserModel').user;
-// var Skills = require('./database/SkillsModel').skills;
-// var Messages = require('./database/MessageModel').messages;
 
 var routesActivation = require('./server/routes');
 
@@ -69,6 +60,8 @@ app.use(favicon('./favicon.ico'));
 app.use(flash()); // use connect-flash for flash messages stored in session
 app.use(morgan('dev')); // log every request to the console
 app.use(cookieParser()); // read cookies (needed for auth)
+
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -139,26 +132,6 @@ passport.deserializeUser(function(obj, done) {
 //   login page.  Otherwise, the primary route function function will be called,
 //   which, in this example, will redirect the user to the home page.
 //Step 2
-// app.get('/auth/github/callback', 
-//   passport.authenticate('github', { failureRedirect: '/login' }),
-//   //This is the request handler that will be called when they click the log in to get hub. 
-//   userAuthUtil.directToProfile);
-
-//The next four lines do not appear to do anything. I will double check, then delete if proven true.
-// app.get('/logout', function(req, res){
-//   req.logout();
-//   res.redirect('/');
-// });
-
-
-// This will be the route to call when my page gets redirected to the profile. So my profile page should do a http.get to this route automatically once the user is logged in. 
-//Step 3
-// app.get('/account', ensureAuthenticated, function(req, res){
-//   res.json(req.user);
-// });
-
-// app.get('/login', userAuthUtil.sendingUserToClient);
-
 
 // app.get('/skills', function(req, res, next){
 //   User.find(function(err, user){
@@ -209,11 +182,8 @@ passport.deserializeUser(function(obj, done) {
 //   });
 // });
 
-
-
 //if the person is signed in and goes back to the profile page
 // app.post('/getFromDatabaseBecausePersonSignedIn', userUtils.getFromDatabaseBecausePersonSignedIn);
-
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
@@ -221,6 +191,7 @@ passport.deserializeUser(function(obj, done) {
 //   the request will proceed.  Otherwise, the user will be redirected to the
 //   login page.
 //Step 4:
+
 // function ensureAuthenticated(req, res, next) {
 //   if (req.isAuthenticated()) { 
 //     console.log('this is ensureAuthenticated', isAuthenticated);

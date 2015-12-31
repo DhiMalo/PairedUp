@@ -1,11 +1,14 @@
-
-<h1>The Codesharing experience will live here </h1>
-<div class="row">
+<div class="well">
+  <h1 class="text-primary"> Pair | Share | Learn </h1>
+</div><div class="row">
   <div class="col-md-2"> 
+
     <button ng-click='add()'>Add</button>
-    <div ng-repeat=" file in filesList">
+    <div class="well" ng-repeat=" file in filesList"><!-- {{ file.title }}  -->
       <button ng-click='delete(file.id)'>Delete</button>
+      <!-- Edit function tied to button with the name of the document -->
       <button ng-click='edit(file.id)'>Edit {{file.title}}</button>
+      <!-- Share with button, can be improved later. Need to ask the user who they would like to share with.  -->
       <button ng-click='shareWith(file.id)'>ShareWith</button>
       <button ng-click='update(file.id)'>Update</button>
     </div>

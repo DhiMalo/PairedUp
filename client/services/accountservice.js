@@ -5,13 +5,18 @@ angular.module('myApp')
       getProfile: function() {
           return $http.get('/account')
         .success(function(req, res){
-         
           var username = req.profile.displayName;
           return username;
         });
       
       },
 
+      isAuthenticated: function() {
+          return $http.get('/checkIfLoggedIn').then(function(response){
+            // console.log('this is isAuthenticated', response, 'response.data', response.data.loggedIn)
+            return response.data.loggedIn;
+        });
+        },
 
       setChekIfActivelyLoggedIn: function(val) {
             $window.localStorage && $window.localStorage.setItem('notLoggedIn', val);

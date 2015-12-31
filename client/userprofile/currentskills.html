@@ -1,18 +1,46 @@
-<h1>Current Skills</h1>
+<div class="row" id="whiteText">
 
-<h5><label>AngularJS</label><input ng-model="angular" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+	<h1>Current Skills</h1>
 
-<h5><label>NodeJS</label><input ng-model="node" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+	<div class="col-md-4">
+		<h3 class="danger">
 
-<h5><label>jQuery</label><input ng-model="jquery" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>AngularJS</label><input ng-model="angular" id="slider1" type="range" min="0" max="100" step="10" />
 
-<h5><label>HTML</label><input ng-model="html" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>NodeJS</label><input ng-model="node" id="slider1" type="range" min="0" max="100" step="10" />
 
-<h5><label>CSS</label><input ng-model="css" id="slider1" type="range" min="0" max="5" step="1" /></h5>
+		<label>jQuery</label><input ng-model="jquery" id="slider1" type="range" min="0" max="100" step="10" />
 
-<button ng-click="add()">ADD</button>
-</br>
-<a href="/skills">hit this</a>
-{{currentskills}}
+		<label>HTML</label><input ng-model="html" id="slider1" type="range" min="0" max="100" step="10" />
 
-<a ui-sref="profile.futureskills">NEXT</a>
+		<label>CSS</label><input ng-model="css" id="slider1" type="range" min="0" max="100" step="10" />
+		</h3>
+	</div>
+
+	<div class="col-md-4">
+		<h3 class="danger">
+
+			<label>Java</label><input ng-model="java" id="slider1" type="range" min="0" max="100" step="10" />
+
+			<label>Ruby</label><input ng-model="ruby" id="slider1" type="range" min="0" max="100" step="10" />
+
+			<label>Swift</label><input ng-model="swift" id="slider1" type="range" min="0" max="100" step="10" />
+
+			<label>Python</label><input ng-model="python" id="slider1" type="range" min="0" max="100" step="10" />
+
+			<label>Go</label><input ng-model="Go" id="slider1" type="range" min="0" max="100" step="10" />
+		</h3>
+
+	</div>
+
+	<div class="col-md-4">
+	</br></br></br></br></br></br>
+	<button ng-click="add()">Save</button>
+</br></br>
+</div>
+
+<a class="btn bg-success" ui-sref="profile.futureskills">NEXT</a>
+
+</div>
+
+

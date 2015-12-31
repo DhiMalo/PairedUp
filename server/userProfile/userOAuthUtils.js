@@ -1,4 +1,4 @@
-var config = require('../../config.js');
+// var config = require('../../config.js');
 var passport = require('passport');
 var GitHubStrategy = require('passport-github').Strategy;
 var session = require('express-session');
@@ -22,7 +22,7 @@ passport.deserializeUser(function(obj, done) {
 module.exports = {
     passportAuthenticate: passport.authenticate('github'), 
     directToProfile : function (req, res) {
-      res.redirect(config.SERVE_HTTP+'/#/profile');
+      res.redirect('https://paired-up.herokuapp.com/#/profile');
     },
     sendingUserToClient: function(req, res){
       res.json({profile: globalProfile, sessions: req.session});

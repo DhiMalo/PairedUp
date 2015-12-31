@@ -1,10 +1,10 @@
-var config = require('../../config.js');
+// var config = require('../../config.js');
 
 angular.module('myApp')
 //factory will hold socket info
 .factory('socket', ['$rootScope', function($rootScope) {
     //A socket connection to our server.
-  var socket = io.connect(config.SERVE_HTTP);
+  var socket = io.connect('https://paired-up.herokuapp.com');
   return {
     //listen to events.
     on: function(eventName, callback){

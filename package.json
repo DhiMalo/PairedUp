@@ -32,6 +32,8 @@
     "express": "^4.13.3",
     "express-favicon": "^1.0.1",
     "express-session": "^1.12.1",
+    "grunt": "0.4.5",
+    "grunt-cli": "0.1.13",
     "jwt-simple": "^0.4.0",
     "mocha": "^2.3.4",
     "moment": "^2.10.6",

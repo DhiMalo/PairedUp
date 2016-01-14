@@ -1,8 +1,6 @@
-
-
-        <hr>
-        <div uib-collapse="isCollapsed">
-          <div class="well well-lg">
+<hr>
+<div uib-collapse="isCollapsed">
+  <div class="well well-lg">
 
   <!--///////////////////////////////////////////////////////////////////////////
     ///Imported Contacts list 
@@ -13,30 +11,30 @@
       <div class="card" ng-repeat="info in allUsers">
 
         <table>
-    
-           <tr>
-            <td colspan="4">
-              <img ng-src="{{info.picture || 'https://placehold.it/100x100'}}">
-            </td>
-        
-          </tr>
 
-            <tr>
-            <td>{{info.displayName}}</td>
-            <td>
+         <tr>
+          <td colspan="4">
+            <img ng-src="{{info.picture || 'https://placehold.it/100x100'}}">
+          </td>
+
+        </tr>
+
+        <tr>
+          <td>{{info.displayName}}</td>
+          <td>
             <span class="glyphicon glyphicon-envelope" aria-hidden="true" ng-click="initChat(info)" target="_blank"></span >
             </td>
             <td> 
               <span class="glyphicon glyphicon-share" aria-hidden="true" ng-click="initSharing(info.displayName)"></span >
-            </td>
-          </tr>
-           
+              </td>
+            </tr>
 
-        </table>
+          </table>
+          
         </br>
       </div>
     </div>
 
   </div>
 </div>
-          </div>
+</div>

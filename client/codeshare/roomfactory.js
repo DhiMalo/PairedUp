@@ -11,7 +11,7 @@ config - the configuration constant we defined in app.js.
 
  */
 angular.module('myApp')
-  .factory('Room', function ($rootScope, $q, Io) {
+  .factory('Room', ['$rootScope', '$q', 'Io', function ($rootScope, $q, Io) {
     var iceConfig = { 'iceServers': [{ 'url': 'stun:stun.l.google.com:19302' }]},
         peerConnections = {},
         currentId, roomId,
@@ -155,4 +155,4 @@ angular.module('myApp')
 
     addHandlers(socket);
     return api;
-  });
+  }]);

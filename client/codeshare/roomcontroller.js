@@ -8,8 +8,7 @@ $scope - used for attaching data to it in order to achieve data-binding with the
 Room - service which we are going to define next. It is used for managing the peer connections.
 */
 angular.module('myApp')
-  .controller('RoomCtrl', function ($sce, VideoStream, $location, $stateParams, $scope, Room) {
-
+  .controller('RoomCtrl', ['$sce', 'VideoStream', '$location', '$stateParams', '$scope', 'Room', function ($sce, VideoStream, $location, $stateParams, $scope, Room) {
     //check whether WebRTC is supported. If it isn't we simply set content of the $scope.error property and stop the controller execution.
     if (!window.RTCPeerConnection || !navigator.getUserMedia) {
       $scope.error = 'WebRTC is not supported by your browser. You can try the app with Chrome and Firefox.';
@@ -62,4 +61,4 @@ angular.module('myApp')
     $scope.getLocalVideo = function () {
       return $sce.trustAsResourceUrl(stream);
     };
-  });
+  }]);

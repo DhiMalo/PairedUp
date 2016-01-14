@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kmcelveen/PairedUp.git"
+    "url": "git+https://github.com/magCacti/PairedUp.git"
   },
   "author": "Joseph Sun, Carine Todmia, Kristina McElveen, Aheri Stanford-Asiyo",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kmcelveen/PairedUp/issues"
+    "url": "https://github.com/magCacti/PairedUp/issues"
   },
-  "homepage": "https://github.com/kmcelveen/PairedUp#readme",
+  "homepage": "https://github.com/magCacti/PairedUp#readme",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "~1.7.1",

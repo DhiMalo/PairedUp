@@ -42,17 +42,16 @@ module.exports = function(app) {
   app.get('/login', userAuthUtil.sendingUserToClient);
 
   passport.use(new GitHubStrategy({
-      clientID: config.GITHUB_CLIENT_ID,
-      clientSecret: config.GITHUB_SECRET,
-      callbackURL: "https://paired-up.herokuapp.com/auth/github/callback",
-      userAgent: "PairedUp"
-    }, userAuthUtil.setingUserToGlobalProfile));
-
+    clientID: config.GITHUB_CLIENT_ID,
+    clientSecret: config.GITHUB_SECRET,
+    callbackURL: "https://paired-up.herokuapp.com/auth/github/callback",
+    userAgent: "PairedUp"
+  }, userAuthUtil.setingUserToGlobalProfile));
 
   app.post('/founduser', function(req, res){
     User.findOne({displayName: req.body.user}, function(err, user){
       if(err){return console.log('no founduser', err)}
-      res.json(user)
+        res.json(user)
     })
   });
 
@@ -60,13 +59,13 @@ module.exports = function(app) {
     roomname = data.fromUser+data.toUser.displayName
     Messages.find({room: data.toUser.displayName+data.fromUser.displayName}, function(err, msg){
       if(err){return err}
-      if(msg[0] === undefined){
-        roomname = data.fromUser.displayName+data.toUser.displayName
-      } else if(msg[0].room){
-        roomname = data.toUser.displayName+data.fromUser.displayName
-      }
-      res.json(msg)
-    })
+        if(msg[0] === undefined){
+          roomname = data.fromUser.displayName+data.toUser.displayName
+        } else if(msg[0].room){
+          roomname = data.toUser.displayName+data.fromUser.displayName
+        }
+        res.json(msg)
+      })
   })
 
   app.post('/skills', function(req, res, next) {
@@ -74,12 +73,12 @@ module.exports = function(app) {
       if(err){return next(err)}
         for(var key in req.body){
           if (req.body[key] !== req.body.github)
-          user.skills[key] = req.body[key]
+            user.skills[key] = req.body[key]
         }
-      user.save(function(err, user){
-        if (err){return next(err)}
+        user.save(function(err, user){
+          if (err){return next(err)}
+        });
       });
-    });
   });
 
   app.post('/futureskills', function(req, res, next){
@@ -87,18 +86,18 @@ module.exports = function(app) {
       if(err){
         return next(err);
       }
-        for(var key in req.body){
-          if (req.body[key] !== req.body.github) {
+      for(var key in req.body){
+        if (req.body[key] !== req.body.github) {
           user.futureskills[key] = req.body[key];
         }
-      user.save(function(err, user){
-        if (err){
-          return next(err);
-        }
-    
+        user.save(function(err, user){
+          if (err){
+            return next(err);
+          }
+
+        });
+      };
     });
-  };
-  });
   });
 
   app.get('/oneuserskill', function(req, res, next){
@@ -108,25 +107,23 @@ module.exports = function(app) {
     });
   });
 
-  
-
   app.post('/getFromDatabaseBecausePersonSignedIn', userUtils.getFromDatabaseBecausePersonSignedIn);
 
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) { 
       console.log('this is ensureAuthenticated', isAuthenticated);
       return next(); }
-    res.redirect('/login');
-  }
+      res.redirect('/login');
+    }
 
-  app.post('/savingDocumentsToDatabase', documentUtils.savingDocumentsToDatabase);
+    app.post('/savingDocumentsToDatabase', documentUtils.savingDocumentsToDatabase);
 
-  app.post('/retrievingDocumentsForUser', documentUtils.retrievingDocumentsForUser);
+    app.post('/retrievingDocumentsForUser', documentUtils.retrievingDocumentsForUser);
 
-  app.post('/deleteDocumentsForUser', documentUtils.deleteDocumentsForUser);
+    app.post('/deleteDocumentsForUser', documentUtils.deleteDocumentsForUser);
 
-  app.post('/api/upload', function(req,res) {
-    res.json({});
-  });
-  
-};
+    app.post('/api/upload', function(req,res) {
+      res.json({});
+    });
+
+  };

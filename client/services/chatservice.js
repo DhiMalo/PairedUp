@@ -1,9 +1,8 @@
 angular.module('myApp')
 	.factory('Chat', ['$http', '$q', function($http, $q){
 		var obj = {
-
 		}
-		//grabs the username of the person that wants to chat. 
+
 		obj.initChat = function(user){
 			return $http.get('/initChat', user)
 		}

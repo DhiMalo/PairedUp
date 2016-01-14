@@ -1,21 +1,14 @@
 angular.module('myApp')
-  .factory('documentData', ['$http', function($http) {
-      
-      var obj = {
-        documents: ['code'],
-        allDocs: []
-      }
+.factory('documentData', ['$http', function($http) {
 
-      obj.getAllDocs = function () {
+  var obj = {
+    documents: ['code'],
+    allDocs: []
+  };
 
-        return $http.get('/getuserdocs')
-        // success(function(data){
-        //   console.log('data from getUserdocs', data)
-        //   for (var i = 0; i < data.length; i++) {
-        //     obj.allDocs.push(data[i])  
-        //   }
-        // })
-      }
+  obj.getAllDocs = function () {
+    return $http.get('/getuserdocs')
+  };
 
-      return obj;
-}])
+  return obj;
+}]);

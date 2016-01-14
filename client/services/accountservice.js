@@ -1,5 +1,5 @@
 angular.module('myApp')
-.factory('Account', function($http, $window) {
+.factory('Account', ['$http', function($http, $window) {
 
   return {
     getProfile: function() {
@@ -56,4 +56,4 @@ angular.module('myApp')
             return $window.localStorage && $window.localStorage.getItem('liveCodeShare');
           }
         };
-      });
+      }]);

@@ -10,8 +10,8 @@
     m.parentNode.insertBefore(a, m)
 })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-ga('create', 'UA-79507440-1', 'auto');
-ga('send', 'pageview');
+// ga('create', 'UA-79507440-1', 'auto');
+// ga('send', 'pageview');
 
 // Adds 'ga' object to the window object and dynamically loads the base google analytics script. 
 // Preliminary implementation with no effect until file included in head of index.html.
